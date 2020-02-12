@@ -29,7 +29,8 @@ func TestWithFakeTime(t *testing.T) {
 	cancelFunc := wallclock.FakeMoment(testMoment) 
   defer cancelFunc()
 	fmt.Printf("%+v") // Outputs: 1999-01-02T12:34:56.001Z	
-}```
+}
+```
 
 ## Drawbacks
 
