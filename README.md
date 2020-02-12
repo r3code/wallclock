@@ -58,9 +58,9 @@ ok      github.com/r3code/wallclock     33.543s
 
 ## Faking time practice
 
-Actually "Changing the system time while making tests (or in general) is a bad idea. 
-You don't know what depends on the system time while executing tests 
-and you don't want to find out the hard way by spending days of debugging into 
-that. Just don't do it." by [nemo](https://stackoverflow.com/a/18970352/469898)
+Actually 
+> Changing the system time while making tests (or in general) is a bad idea. 
+> You don't know what depends on the system time while executing tests and you don't want to find out the hard way by spending days of debugging into that. Just don't do it." 
+by [nemo](https://stackoverflow.com/a/18970352/469898)
 
-But sometimes we need to do it.  
+*But sometimes we need to do it*.  
