@@ -3,7 +3,7 @@ package wallclock
 import "time"
 
 var (  	
-	nowFunc = currentTimeUTC
+	nowFunc = currentTime
 )
 
 // Now gets tim by calling assigned nowFunc. 
@@ -24,7 +24,7 @@ func FakeMoment(timeMoment time.Time) (cancelFunc func()) {
 		return timeMoment
 	}
 	cancelFunc = func() {
-		nowFunc = currentTimeUTC
+		nowFunc = currentTime
 	}
 	return cancelFunc
 }
@@ -32,17 +32,11 @@ func FakeMoment(timeMoment time.Time) (cancelFunc func()) {
 // FakeFixedMoment changes wallclock.Now behaviour to return "2014-11-12T11:45:26.371Z".
 // Returns cancelFunc which should be called to turn time back to realtime.
 func FakeFixedMoment() (cancelFunc func()) {
-  timeFrozen, _ := time.Parse(time.RFC3339, "2014-11-12T11:45:26.371Z") 
-	nowFunc = func() time.Time {	
-	  return timeFrozen
-  }
-	cancelFunc = func() {
-		nowFunc = currentTimeUTC
-	}
-	return cancelFunc
+  timeFrozen, _ := time.Parse(time.RFC3339, "2014-11-12T11:45:26.371Z") 	
+	return FakeMoment(timeFrozen)
 }
 
 // return realtime clock 
-func currentTimeUTC() time.Time {
-	return time.Now().UTC()
+func currentTime() time.Time {
+	return time.Now()
 }
